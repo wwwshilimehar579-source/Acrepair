@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="mainHtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحلوانی للتبريد والتكيف | Al Halwani Cooling & AC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0A5D9A; /* متناسق مع لون الشعار */
+            --secondary: #00AEEF;
+            --dark: #1a1a1a;
+            --light: #f4f7f9;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.95);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* الخطوط والاتجاهات */
+        [dir="rtl"] { font-family: 'Cairo', sans-serif; }
+        [dir="ltr"] { font-family: 'Montserrat', sans-serif; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--white); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+
+        /* Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: var(--glass); backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto; padding: 0.5rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        
+        /* Logo Styling */
+        .logo-wrapper { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-img { height: 60px; width: auto; transition: var(--transition); }
+        .logo-text { font-size: 1.2rem; font-weight: 900; color: var(--primary); display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-text span { font-size: 0.7rem; color: #666; font-weight: 400; }
+
+        .nav-links { display: flex; list-style: none; gap: 1.5rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.9rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        .lang-switch {
+            background: var(--primary); color: white; border: none;
+            padding: 8px 16px; border-radius: 5px; cursor: pointer;
+            font-weight: bold; font-size: 0.8rem; transition: var(--transition);
+        }
+        .lang-switch:hover { background: var(--dark); }
+
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white; padding: 0 1.5rem; margin-top: 60px;
+            background: linear-gradient(rgba(0,40,80,0.7), rgba(0,40,80,0.7)), 
+                        url('https://images.unsplash.com/photo-1599933023573-da4837183c16?auto=format&fit=crop&w=1920&q=80') center/cover;
+        }
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); margin-bottom: 1rem; line-height: 1.2; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+        .cta-box { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            padding: 0.9rem 2.2rem; border-radius: 5px; text-decoration: none;
+            font-weight: 700; display: flex; align-items: center; gap: 0.7rem; transition: var(--transition);
+        }
+        .btn-call { background: var(--primary); color: white; }
+        .btn-wa { background: #25D366; color: white; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.3); }
+
+        /* Sections Styling */
+        section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary); position: relative; padding-bottom: 15px; }
+        .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--secondary); }
+
+        /* Services Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card { 
+            background: var(--white); padding: 3rem 1.5rem; border-radius: 10px; 
+            text-align: center; transition: var(--transition); border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 1.5rem; }
+        .card h3 { margin-bottom: 1rem; color: var(--dark); }
+
+        /* Contact & Footer */
+        .contact-flex { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; }
+        .contact-form { display: flex; flex-direction: column; gap: 1.2rem; background: var(--light); padding: 2rem; border-radius: 10px; }
+        .contact-form input, .contact-form textarea { padding: 1rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; width: 100%; outline: none; }
+        .contact-form input:focus { border-color: var(--primary); }
+        .submit-btn { background: var(--primary); color: white; border: none; padding: 1.1rem; border-radius: 5px; cursor: pointer; font-weight: 700; font-size: 1.1rem; }
+
+        footer { background: #002b4e; color: white; padding: 4rem 2rem 2rem; text-align: center; }
+        .footer-logo { height: 80px; margin-bottom: 1.5rem; filter: brightness(1.2); }
+        .social { margin-bottom: 2rem; display: flex; justify-content: center; gap: 2rem; }
+        .social a { color: white; font-size: 1.8rem; transition: var(--transition); }
+        .social a:hover { color: var(--secondary); transform: scale(1.2); }
+
+        /* Floating Actions */
+        .fixed-actions { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 2000; }
+        [dir="ltr"] .fixed-actions { right: auto; left: 30px; }
+        .action-circle { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; box-shadow: 0 8px 20px rgba(0,0,0,0.3); text-decoration: none; transition: 0.3s; }
+        .action-circle:hover { transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+                background: white; flex-direction: column; padding: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .logo-img { height: 45px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo-wrapper">
+                <img src="123.PNG" alt="Al Halwani Logo" class="logo-img">
+                <div class="logo-text">
+                    <span style="font-size: 1.3rem;" data-key="logo">الحلواني للتبريد</span>
+                    <span data-key="est">EST. 1995 | RIYADH</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-key="nav-home">الرئيسية</a></li>
+                <li><a href="#services" data-key="nav-services">خدماتنا</a></li>
+                <li><a href="#about" data-key="nav-about">من نحن</a></li>
+                <li><a href="#contact" data-key="nav-contact">تواصل معنا</a></li>
+                <li><button class="lang-switch" onclick="toggleLang()" id="langBtn">English</button></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-key="hero-h1">الحلوانی للتبريد والتكيف: خبراء الصيانة منذ 1995</h1>
+            <p data-key="hero-p">نقدم أفضل خدمات تصليح وصيانة المكيفات في الرياض بأسعار تنافسية وضمان حقيقي على العمل.</p>
+            <div class="cta-box">
+                <a href="tel:+966567870795" class="btn btn-call">
+                    <i class="fas fa-phone-alt"></i> <span data-key="call-now">اتصل الآن</span>
+                </a>
+                <a href="https://wa.me/966567870795" class="btn btn-wa">
+                    <i class="fab fa-whatsapp"></i> <span data-key="wa-now">واتساب</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-header">
+            <h2 data-key="nav-services">خدماتنا</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-screwdriver-wrench"></i>
+                <h3 data-key="s1-t">تصليح جميع الأعطال</h3>
+                <p data-key="s1-d">إصلاح شامل لمكيفات السبلت، المركزي، والشباك بأحدث المعدات.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-snowflake"></i>
+                <h3 data-key="s3-t">غسيل وتطهير</h3>
+                <p data-key="s3-d">تنظيف المكيفات بالضغط العالي لإزالة الأتربة وتحسين جودة الهواء.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bolt"></i>
+                <h3 data-key="s4-t">شحن فريون</h3>
+                <p data-key="s4-d">فحص تسريب الغاز وإعادة تعبئة الفريون الأصلي لضمان برودة ممتازة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background: var(--light); border-radius: 20px; margin-bottom: 50px;">
+        <div class="contact-flex">
+            <div class="about-text">
+                <h2 data-key="nav-about" style="color: var(--primary); margin-bottom: 1.5rem;">لماذا الحلوانی؟</h2>
+                <p data-key="about-p">نحن في "الحلوانی للتبريد والتكيف" نفخر بخبرتنا التي تمتد لأكثر من 30 عاماً في قلب الرياض. نلتزم بالدقة في المواعيد، والاحترافية في العمل، والصدق مع العميل.</p>
+                <div style="display:flex; gap: 30px; margin-top: 2rem;">
+                    <div><h3 style="color:var(--primary); font-size: 2.5rem;">30+</h3><p data-key="years">عاماً من الخبرة</p></div>
+                    <div><h3 style="color:var(--primary); font-size: 2.5rem;">24/7</h3><p data-key="support">خدمة طوارئ</p></div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                 <img src="123.PNG" alt="Logo Large" style="width: 280px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header">
+            <h2 data-key="nav-contact">احجز موعدك الآن</h2>
+        </div>
+        <div class="contact-flex">
+            <div>
+                <h3 data-key="contact-h3" style="color: var(--primary); margin-bottom: 1rem;">معلومات الاتصال</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-phone-alt"></i> 0567870795</p>
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-envelope"></i> info@alhalwanicooling.com</p>
+                <p style="font-size: 1.2rem;"><i class="fas fa-location-dot"></i> الرياض، المملكة العربية السعودية</p>
+            </div>
+            <form class="contact-form">
+                <input type="text" id="nameInp" placeholder="الاسم الكامل" required>
+                <input type="tel" id="telInp" placeholder="رقم الجوال" required>
+                <textarea rows="4" id="msgInp" placeholder="اشرح المشكلة أو الخدمة المطلوبة" required></textarea>
+                <button type="submit" class="submit-btn" data-key="send">إرسال الطلب</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <img src="123.PNG" alt="Footer Logo" class="footer-logo">
+        <div class="social">
+            <a href="https://wa.me/966567870795"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p>&copy; 2026 Al Halwani Cooling & AC. <span data-key="rights">جميع الحقوق محفوظة</span></p>
+    </footer>
+
+    <div class="fixed-actions">
+        <a href="https://wa.me/966567870795" class="action-circle" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:+966567870795" class="action-circle" style="background:var(--primary)"><i class="fas fa-phone-alt"></i></a>
+    </div>
+
+    <script>
+        const i18n = {
+            ar: {
+                "logo": "الحلواني للتبريد",
+                "est": "تأسست عام 1995 | الرياض",
+                "nav-home": "الرئيسية",
+                "nav-services": "خدماتنا",
+                "nav-about": "من نحن",
+                "nav-contact": "تواصل معنا",
+                "hero-h1": "الحلوانی للتبريد والتكيف: خبراء الصيانة منذ 1995",
+                "hero-p": "نقدم أفضل خدمات تصليح وصيانة المكيفات في الرياض بأسعار تنافسية وضمان حقيقي على العمل.",
+                "call-now": "اتصل الآن",
+                "wa-now": "واتساب",
+                "s1-t": "تصليح جميع الأعطال",
+                "s1-d": "إصلاح شامل لمكيفات السبلت، المركزي، والشباك بأحدث المعدات.",
+                "s3-t": "غسيل وتطهير",
+                "s3-d": "تنظيف المكيفات بالضغط العالي لإزالة الأتربة وتحسين جودة الهواء.",
+                "s4-t": "شحن فريون",
+                "s4-d": "شحن فريون أصلي مع فحص التسريبات بدقة عالية.",
+                "about-p": "نحن في 'الحلوانی للتبريد والتكيف' نفخر بخبرتنا التي تمتد لأكثر من 30 عاماً في قلب الرياض. نلتزم بالدقة والاحترافية.",
+                "years": "عاماً من الخبرة",
+                "support": "خدمة طوارئ",
+                "contact-h3": "معلومات الاتصال",
+                "send": "إرسال الطلب",
+                "rights": "جميع الحقوق محفوظة",
+                "ph-name": "الاسم الكامل",
+                "ph-phone": "رقم الجوال",
+                "ph-msg": "اشرح المشكلة أو الخدمة المطلوبة"
+            },
+            en: {
+                "logo": "Al Halwani Cooling",
+                "est": "EST. 1995 | RIYADH",
+                "nav-home": "Home",
+                "nav-services": "Services",
+                "nav-about": "About Us",
+                "nav-contact": "Contact",
+                "hero-h1": "Al Halwani Cooling & AC: Experts Since 1995",
+                "hero-p": "Providing the best AC repair and maintenance in Riyadh with competitive prices and real warranty.",
+                "call-now": "Call Now",
+                "wa-now": "WhatsApp",
+                "s1-t": "Repair All Faults",
+                "s1-d": "Comprehensive repair for Split, Central, and Window ACs using modern tools.",
+                "s3-t": "Washing & Disinfection",
+                "s3-d": "High-pressure AC cleaning to remove dust and improve air quality.",
+                "s4-t": "Freon Refill",
+                "s4-d": "Original Freon charging with high-accuracy leakage testing.",
+                "about-p": "At Al Halwani Cooling & AC, we take pride in over 30 years of experience in Riyadh. We value punctuality and professionalism.",
+                "years": "Years of Experience",
+                "support": "24/7 Support",
+                "contact-h3": "Contact Information",
+                "send": "Send Request",
+                "rights": "All Rights Reserved",
+                "ph-name": "Full Name",
+                "ph-phone": "Phone Number",
+                "ph-msg": "Describe your issue or service needed"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function toggleLang() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const html = document.getElementById('mainHtml');
+            const btn = document.getElementById('langBtn');
+
+            html.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
+            html.lang = currentLang;
+            btn.innerText = (currentLang === 'ar') ? 'English' : 'العربية';
+
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                el.innerText = i18n[currentLang][key];
+            });
+
+            document.getElementById('nameInp').placeholder = i18n[currentLang]['ph-name'];
+            document.getElementById('telInp').placeholder = i18n[currentLang]['ph-phone'];
+            document.getElementById('msgInp').placeholder = i18n[currentLang]['ph-msg'];
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = "0.2rem 2rem";
+            } else {
+                nav.style.padding = "0.5rem 2rem";
+            }
+        });
+    </script>
+</body>
+</html>
