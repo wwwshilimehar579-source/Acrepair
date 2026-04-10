@@ -84,14 +84,6 @@
         .btn-wa { background: #25D366; color: white; }
         .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
 
-        /* --- GALLERY SLIDER STYLES --- */
-        .drive-slider-section { padding: 4rem 0; overflow: hidden; background: #fff; }
-        .drive-slider-container { display: flex; width: calc(350px * 10); animation: driveScroll 25s linear infinite; }
-        .drive-slide { width: 350px; height: 230px; padding: 10px; flex-shrink: 0; }
-        .drive-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 1px solid #eee; }
-        @keyframes driveScroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-350px * 5)); } }
-        .drive-slider-container:hover { animation-play-state: paused; }
-
         /* Services Cards */
         section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 5rem; }
@@ -151,7 +143,6 @@
             .hero h1 { font-size: 2.2rem; }
             .stats-bar { flex-direction: column; gap: 1.5rem; padding: 2rem; }
             .contact-container { padding: 2rem; gap: 2rem; }
-            .drive-slide { width: 280px; height: 180px; }
         }
     </style>
 </head>
@@ -201,24 +192,6 @@
             </div>
         </div>
     </section>
-
-    <div class="drive-slider-section">
-        <div class="section-header">
-            <h2 data-key="work-gallery">معرض أعمالنا</h2>
-        </div>
-        <div class="drive-slider-container">
-            <div class="drive-slide"><img src="https://i.ibb.co/ycyLp4Ws/image.png" alt="W1"></div>
-            <div class="drive-slide"><img src="https://i.ibb.co/pFpTDX1/image.png" alt="W2"></div>
-            <div class="drive-slide"><img src="https://i.ibb.co/W4WczbWZ/image.png" alt="W3"></div>
-            <div class="drive-slide"><img src="https://i.ibb.co/MHywqZj/image.png" alt="W4"></div>
-            <div class="drive-slide"><img src="https://i.ibb.co/v4K7Ljk2/image.png" alt="W5"></div>
-            <div class="drive-slide"><img src="https://i.ibb.co/ycyLp4Ws/image.png" alt="W1"></div>
-            <div class="drive-slide"><img src="https://i.ibb.co/pFpTDX1/image.png" alt="W2"></div>
-            <div class="drive-slide"><img src="https://i.ibb.co/W4WczbWZ/image.png" alt="W3"></div>
-            <div class="drive-slide"><img src="https://i.ibb.co/MHywqZj/image.png" alt="W4"></div>
-            <div class="drive-slide"><img src="https://i.ibb.co/v4K7Ljk2/image.png" alt="W5"></div>
-        </div>
-    </div>
 
     <section id="services">
         <div class="section-header">
@@ -309,7 +282,7 @@
                 "stat-cust": "عملاء سعداء", "stat-feed": "تقييم إيجابي", "stat-rate": "الأعلى تقييماً",
                 "rev-title": "آراء عملائنا (5 نجوم)", "call-now": "اتصل الآن", "wa-now": "واتساب",
                 "s-ac": "صيانة مكيفات", "s-wm": "صيانة غسالات", "s-fr": "صيانة ثلاجات", "s-ov": "صيانة أفران",
-                "send": "إرسال الطلب", "rights": "جميع الحقوق محفوظة", "work-gallery": "معرض أعمالنا"
+                "send": "إرسال الطلب", "rights": "جميع الحقوق محفوظة"
             },
             en: {
                 "logo": "Al Halwani Jeddah", "nav-home": "Home", "nav-services": "Services", "nav-contact": "Contact",
@@ -317,7 +290,7 @@
                 "stat-cust": "Happy Customers", "stat-feed": "Feedbacks", "stat-rate": "Top Rated Service",
                 "rev-title": "Client Reviews (5 Stars)", "call-now": "Call Now", "wa-now": "WhatsApp",
                 "s-ac": "AC Repair", "s-wm": "Washing Machines", "s-fr": "Fridge & Freezer", "s-ov": "Oven Repair",
-                "send": "Send Request", "rights": "All Rights Reserved", "work-gallery": "Our Gallery"
+                "send": "Send Request", "rights": "All Rights Reserved"
             }
         };
 
